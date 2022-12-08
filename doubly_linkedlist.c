@@ -7,7 +7,7 @@ struct node {
 	int data;
 };
 
-struct node *new=NULL,*ptr=NULL,*head=NULL, *nextptr=NULL, *prevptr=NULL;
+struct node *new=NULL,*ptr=NULL,*head=NULL;
 
 void insertion_last();
 void delete_last();
@@ -167,7 +167,7 @@ void display() {
 	} else {
 		ptr = head;
 		while(ptr!=NULL){
-			printf("<-|%p|%d|%p|->",ptr->prev,ptr->data,ptr->next);
+			printf("%d",ptr->data);
 			ptr = ptr->next;
 		}
 		printf("\n");
