@@ -70,9 +70,11 @@ void insertion_beginning() {
 	if(head == NULL){
 		head = new;
 	}
-	head->prev=new;
-	new->next = head;
-	head = new;
+	else {
+		head->prev=new;
+		new->next = head;
+		head = new;
+	}
 }
 
 void insert_after_key() {
