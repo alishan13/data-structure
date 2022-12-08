@@ -16,6 +16,7 @@ void delete_beginning();
 void display();
 void insert_after_key();
 void delete();
+void create_node();
 
 void main() {
 	int opt;
@@ -44,12 +45,16 @@ void main() {
 	} while(opt!=0);
 }
 
-void insertion_last() {
+void create_node() {
 	new = (struct node*)malloc(sizeof(struct node));
 	printf("Enter the data to be inserted : ");
 	scanf("%d",&new->data);
 	new->next = NULL;
 	new->prev = NULL;
+}
+
+void insertion_last() {
+	create_node();
 	if(head == NULL) {
 		head = new;
 	}
@@ -64,9 +69,7 @@ void insertion_last() {
 }
 
 void insertion_beginning() {
-	new = (struct node*)malloc(sizeof(struct node));
-	printf("Enter the data to be inserted : ");
-	scanf("%d",&new->data);
+	create_node();
 	if(head == NULL){
 		head = new;
 	} else {
@@ -78,11 +81,9 @@ void insertion_beginning() {
 
 void insert_after_key() {
 	int key;
-	new = (struct node*)malloc(sizeof(struct node));
+	create_node();
 	printf("Enter the key where the node to be inserted : ");
 	scanf("%d",&key);
-	printf("Enter the data to be inserted : ");
-	scanf("%d",&new->data);
 	ptr=head;
 	while(ptr->data != key && ptr->next != NULL){
 		ptr = ptr->next;
