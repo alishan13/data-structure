@@ -23,7 +23,7 @@ void main() {
 							break;
 			case 2: deletion();
 							break;
-			case 7: display();
+			case 3: display();
 							break;
 			case 0:
 			default:break;
@@ -38,16 +38,17 @@ void insertion() {
 	new->next = NULL;
 	new->prev = NULL;
 	if(front == NULL) {
-		front = new;
+	  new->next = new;
+	  new->prev = new;
+	  front = new;
 		rear = new;
-		front->next = NULL:
-		rear->next = NULL;
 	}
 	else {
 		new->prev = rear;
+		new->next = front;
 		rear->next = new;
 		rear=new;
-		new->next = front;
+		front->prev = new;
 	}
 }
 
@@ -55,7 +56,7 @@ void deletion() {
 	if(front == NULL){
 		printf("Empty Queue \n");
 	}
-	else if(front->next == NULL) {
+	else if(front == rear) {
 		front = NULL;
 		rear = NULL;
 		free(front);
@@ -63,28 +64,25 @@ void deletion() {
 		printf("NODE DELETED");
 	}
 	else {
-		ptr=head;
-		head->next->prev = head->prev;
-		head = head->next;
+		ptr=front;
+		display();
+		front->next->prev = front->prev;
+		front = front->next;
+		rear->next = front;
 		free(ptr);
 		printf("NODE DELETED");
 	}
 }
 
 void display() {
-	if(head == NULL) {
+	if(front == NULL) {
 		printf("Empty Queue \n");
 	} else {
-		ptr = head;
-		while(ptr->next != head){
-			printf("<-|%p|%d|%p|->",ptr->prev,ptr->data,ptr->next);
+		ptr = front;
+		do {
+		  printf("<-|%p|%d|%p|->",ptr->prev,ptr->data,ptr->next);
 			ptr = ptr->next;
-		}
+		} while( ptr != front);
 		printf("\n");
 	}
 }
-	
-	
-		
-	
-
