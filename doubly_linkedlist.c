@@ -7,7 +7,7 @@ struct node {
 	int data;
 };
 
-struct node *new=NULL,*ptr=NULL,*head=NULL;
+struct node *new=NULL,*ptr=NULL,*head=NULL, *nextptr=NULL, *prevptr=NULL;
 
 void insertion_last();
 void delete_last();
@@ -69,8 +69,7 @@ void insertion_beginning() {
 	scanf("%d",&new->data);
 	if(head == NULL){
 		head = new;
-	}
-	else {
+	} else {
 		head->prev=new;
 		new->next = head;
 		head = new;
@@ -167,7 +166,7 @@ void display() {
 	} else {
 		ptr = head;
 		while(ptr!=NULL){
-			printf("%d",ptr->data);
+			printf("%d ",ptr->data);
 			ptr = ptr->next;
 		}
 		printf("\n");
