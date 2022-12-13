@@ -79,7 +79,7 @@ void display() {
 	} else {
 		ptr = front;
 		do {
-		  printf("<-|%p|%d|%p|->",ptr->prev,ptr->data,ptr->next);
+		  printf("%d ",ptr->data);
 			ptr = ptr->next;
 		} while( ptr != front);
 		printf("\n");
