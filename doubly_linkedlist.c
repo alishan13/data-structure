@@ -149,14 +149,19 @@ void delete() {
 		while(ptr->data != key && ptr->next != NULL){
 			ptr = ptr->next;
 		}
-		if(ptr->data == key) {
-			ptr->prev->next=ptr->next;
-			ptr->next->prev=ptr->prev;
-			free(ptr);
-			printf("NODE DELETED");
+		if(ptr->data != key) {
+		  printf("No data found");
 		}
-		else {
-			printf("No data found");
+		else if(ptr->next == NULL) {
+	    ptr->prev->next = NULL;
+	    free(ptr);
+	    printf("NODE DELETED");
+	  }
+	  else {
+		  ptr->prev->next=ptr->next;
+		  ptr->next->prev=ptr->prev;
+		  free(ptr);
+		  printf("NODE DELETED");
 		}
 	}
 }
