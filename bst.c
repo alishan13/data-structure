@@ -12,12 +12,13 @@ void insert();
 void inorder(struct node*);
 void preorder(struct node*);
 void postorder(struct node*);
+void search(struct node*);
 
 void main() {
 	int opt;
 	do {
 		printf("\nChoose the operation number\n");
-		printf("1.Insert \n2.Inorder-display \n3.Preorder-display \n4.Postorder-display \n0.Exit : ");
+		printf("1.Insert \n2.Inorder-display \n3.Preorder-display \n4.Postorder-display \n5.Search \n0.Exit : ");
 		scanf("%d",&opt);
 		switch(opt) {
 			case 1: insert();
@@ -27,6 +28,8 @@ void main() {
 			case 3: preorder(root);
 							break;
 			case 4: postorder(root);
+							break;
+			case 5: search(root);
 							break;
 			case 0:
 			default:break;
@@ -42,9 +45,8 @@ void insert() {
 	if (new==NULL)
 		printf("Insuffient memory");
 	else {
-		if (root == NULL) {
+		if (root == NULL)
 			root = new;
-		}
 		else {
 			ptr = root;
 			while(ptr!=NULL){
@@ -82,6 +84,7 @@ void preorder(struct node *ptr){
 		preorder(ptr->right);
 	}
 }
+
 void postorder(struct node *ptr){
 	if(ptr!=NULL){
 		postorder(ptr->left);
@@ -90,3 +93,26 @@ void postorder(struct node *ptr){
 	}
 }
 
+void search(struct node *ptr){
+	int data,flag=0;
+	if(ptr == NULL)
+		printf("Empty tree");
+	else {
+		printf("Enter the element to find : ");
+		scanf("%d",&data);
+		while(ptr!=NULL){
+			if(data == ptr->data){
+				printf("Element found");
+				ptr=NULL;
+				flag=1;
+			}
+			else if(data > ptr->data)
+				ptr=ptr->right;
+			else
+				ptr=ptr->left;
+		}
+		if(flag==0)
+			printf("Element not found");
+			
+	}
+}	
