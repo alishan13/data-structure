@@ -56,8 +56,10 @@ void insert() {
 		else {
 			ptr = root;
 			while(ptr!=NULL){
-				if(new->data == ptr->data) 
+				if(new->data == ptr->data) {
 					printf("Item already exists");
+					break;
+				}
 				else if(new->data > ptr->data) {
 					leaf = ptr;
 					ptr=ptr->right;
