@@ -33,7 +33,7 @@ void dequeue()
       rear = front = -1;
     else
       front = (front + 1) % size;
-    printf("Item deleted \n")
+    printf("Item deleted \n");
   }
 }
 
